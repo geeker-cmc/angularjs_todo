@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="ctrl">
+		<p ng-repeat="item in list">
+			姓名：{{item.name}}年龄：{{item.age}}
+		</p>
+		<hello></hello>
+		<hello2></hello2>
+	</div>
+</body>
+	<script src="./node_modules/angular/angular.min.js"></script>
+	<script type="text/ng-template" id="hello2.html">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+	</script>
+	<script>
+          angular.module("myApp",[]).controller("ctrl",function($scope){
+
+          	$scope.list=[
+          		{name:"lili",age:12},
+          		{name:"lili",age:13},
+          		{name:"lili",age:14},
+          		{name:"lili",age:15}
+          	]
+          	console.log($scope);
+          	console.log(this);
+          }).directive("hello",function(){
+          	return {
+          		
+          		template:"<h1>我是自定义命令</h1>"
+          	}
+          }).directive("hello2",function(){
+          	return {
+          		templateUrl:"hello2.html"
+          	}
+          })
+
+	</script>
+</html>
